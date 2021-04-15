@@ -1,0 +1,87 @@
+[System]
+Name='cuci mobil'
+Type='mamdani'
+Version=2.0
+NumInputs=3
+NumOutputs=3
+NumRules=27
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='besarmobil'
+Range=[0 1]
+NumMFs=3
+MF1='kecil':'gaussmf',[0.1699 6.939e-18]
+MF2='sedang':'gaussmf',[0.1699 0.5]
+MF3='besar':'gaussmf',[0.1699 1]
+
+[Input2]
+Name='kondisi'
+Range=[0 1]
+NumMFs=3
+MF1='bersih':'gaussmf',[0.1699 6.939e-18]
+MF2='kotor':'gaussmf',[0.1699 0.5]
+MF3='sangatkotor':'gaussmf',[0.1699 1]
+
+[Input3]
+Name='ketahanangoresan'
+Range=[0 1]
+NumMFs=2
+MF1='tidaktahan':'trimf',[-0.6356 6.939e-18 0.6356]
+MF2='tahangores':'trimf',[0.3644 1 1.636]
+
+[Output1]
+Name='semprotanair'
+Range=[0 1]
+NumMFs=3
+MF1='lemah':'trimf',[-0.4 0 0.4]
+MF2='sedang':'trimf',[0.1 0.5 0.9]
+MF3='kuat':'trimf',[0.6 1 1.4]
+
+[Output2]
+Name='lamamencuci'
+Range=[0 1]
+NumMFs=3
+MF1='sebentar':'trimf',[-0.4 0 0.4]
+MF2='lama':'trimf',[0.1 0.5 0.9]
+MF3='sangat_lama':'trimf',[0.6 1 1.4]
+
+[Output3]
+Name='biaya'
+Range=[0 1]
+NumMFs=2
+MF1='murah':'trimf',[-0.4 0 0.6]
+MF2='mahal':'trimf',[0.4 1 1.4]
+
+[Rules]
+1 0 0, 0 1 1 (1) : 1
+2 0 0, 0 2 1 (1) : 1
+3 0 0, 0 3 2 (1) : 1
+0 1 0, 1 1 0 (1) : 1
+0 2 0, 1 2 0 (1) : 1
+0 3 0, 1 3 0 (1) : 1
+0 0 1, 1 0 0 (1) : 1
+0 0 2, 2 0 0 (1) : 1
+0 0 2, 3 0 0 (1) : 1
+1 1 0, 0 1 1 (1) : 1
+2 1 0, 0 2 1 (1) : 1
+3 1 0, 0 2 1 (1) : 1
+1 2 0, 0 2 1 (1) : 1
+2 2 0, 0 2 1 (1) : 1
+3 2 0, 0 2 2 (1) : 1
+1 3 0, 0 3 2 (1) : 1
+2 3 0, 0 3 2 (1) : 1
+3 3 0, 0 3 2 (1) : 1
+1 1 1, 1 2 0 (1) : 1
+2 1 1, 1 2 0 (1) : 1
+3 1 1, 1 3 0 (1) : 1
+1 1 2, 2 2 0 (1) : 1
+2 1 2, 2 2 0 (1) : 1
+3 1 2, 3 2 0 (1) : 1
+3 1 2, 2 3 0 (1) : 1
+1 1 2, 3 1 0 (1) : 1
+2 1 2, 3 1 0 (1) : 1
